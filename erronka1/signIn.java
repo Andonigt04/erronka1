@@ -77,6 +77,8 @@ public class signIn extends erronka1.Main implements userLog {
 		signInPane.add(txtErabiltzailea);
 		signInPane.add(txtPasahitza);
 	}
+
+	public String user="", pass="";
 	
 	public JPanel signInPane = new JPanel();
 	
