@@ -10,11 +10,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.UIManager;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
-public class signUp extends signIn{
+public class signUp extends erronka1.signIn {
 
 	private JFrame frame;
 
@@ -59,9 +58,9 @@ public class signUp extends signIn{
 		frame.getContentPane().add(signUpPane);
 		
 		txtIzena.setBounds(149, 120, 175, 14);
+		txtPasahitza.setBounds(148, 145, 176, 14);
 		txtPasahitza.setBounds(148, 145, 175, 14);
-		txtPasahitza.setBounds(148, 145, 175, 14);
-		txtPasahitzaKonfirmatu.setBounds(149, 170, 174, 14);
+		txtPasahitzaKonfirmatu.setBounds(149, 170, 175, 14);
 		
 		lblZerbaitTzartoAtera.setHorizontalAlignment(SwingConstants.CENTER);
 		lblZerbaitTzartoAtera.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -75,11 +74,13 @@ public class signUp extends signIn{
 		hasiSahioa.setBounds(359, 265, 89, 23);
 		hasiSahioa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				frame.getContentPane().add(signInPane);
+			    signInPane.setVisible(true);
+			    signUpPane.setVisible(false);
 			}
 		});
 		hasiSahioa.setBorder(null);
-		hasiSahioa.setBackground(UIManager.getColor("Button.light"));
+		hasiSahioa.setBackground(null);
 		
 		pasahitza.setBounds(334, 142, 137, 20);
 		
@@ -91,12 +92,14 @@ public class signUp extends signIn{
 				String contrasena = new String(pasahitza.getPassword());
 				String contrasenaKonfirmatu = new String(pasahitzaKonfirmatu.getPassword());
 
-				if (contrasena.equals(contrasenaKonfirmatu) && !contrasena.isEmpty() && !contrasenaKonfirmatu.isEmpty() && !erabiltzailea.equals("")) {
-				    user = erabiltzailea.getText();
-				    pass = contrasena;
+				if (contrasena.equals(contrasenaKonfirmatu) && !contrasena.isEmpty() && !contrasenaKonfirmatu.isEmpty() && !erabiltzailea.getText().equals("")) {
+				    userLog.user = erabiltzailea.getText();
+				    userLog.pass = contrasena;
 				    
+				    frame.getContentPane().add(signInPane);
 				    signInPane.setVisible(true);
 				    signUpPane.setVisible(false);
+				    
 				} else if(!contrasena.equals(contrasenaKonfirmatu)){
 					lblZerbaitTzartoAtera.setText("Pasahitzak desberdinak dira.");
 					lblZerbaitTzartoAtera.setVisible(true);
@@ -108,6 +111,7 @@ public class signUp extends signIn{
 		
 		
 		//default
+		signInPane.setVisible(false);
 		lblZerbaitTzartoAtera.setVisible(false);
 		
 		//panelera gehitu objetuak
@@ -122,6 +126,7 @@ public class signUp extends signIn{
 		signUpPane.add(pasahitza);
 		signUpPane.add(pasahitza);
 		signUpPane.add(lblZerbaitTzartoAtera);
+		
 	}
 	
 	public JPanel signUpPane = new JPanel();
@@ -141,5 +146,4 @@ public class signUp extends signIn{
 	
 	public JButton hasiSahioa = new JButton("Hasi Saioa");
 	
-	public String user ="", pass ="";
 }
