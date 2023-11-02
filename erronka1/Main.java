@@ -15,8 +15,8 @@ public class main extends erronka1.signUp{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					main window = new main();
-					window.frame.setVisible(true);
+					Main window = new Main();
+					window.main.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -27,7 +27,7 @@ public class main extends erronka1.signUp{
 	/**
 	 * Create the application.
 	 */
-	public main() {
+	public Main() {
 		initialize();
 	}
 
@@ -35,12 +35,10 @@ public class main extends erronka1.signUp{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 500);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		frame.getContentPane().add(signUpPane);
+		main = new JFrame();
+		main.setBounds(100, 100, 800, 500);
+		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-
+	
 }
