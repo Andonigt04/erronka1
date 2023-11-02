@@ -93,8 +93,8 @@ public class signUp extends erronka1.signIn {
 				String contrasenaKonfirmatu = new String(pasahitzaKonfirmatu.getPassword());
 
 				if (contrasena.equals(contrasenaKonfirmatu) && !contrasena.isEmpty() && !contrasenaKonfirmatu.isEmpty() && !erabiltzailea.getText().equals("")) {
-				    userLog.user = erabiltzailea.getText();
-				    userLog.pass = contrasena;
+				    user = erabiltzailea.getText();
+				    pass = contrasena;
 				    
 				    frame.getContentPane().add(signInPane);
 				    signInPane.setVisible(true);
