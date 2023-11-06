@@ -61,9 +61,13 @@ public class signIn extends erronka1.main {
 		
 		sahioaSartu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//if(erabiltzaileaSartu.getText().equals(user) && pasahitzaSartu.getPassword().equals(pass)){
+				char[] contrasenaChars = pasahitzaSartu.getPassword();
+				
+				String contrasena = new String(contrasenaChars);
+				if(erabiltzaileaSartu.getText().equals(user) && pass.equals(contrasena)){
 					new main();
-				//}
+					frame.dispose();
+				}
 			}
 		});
 		

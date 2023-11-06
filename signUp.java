@@ -47,6 +47,7 @@ public class signUp extends erronka1.signIn {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 500);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Registratu");
 		
 		JLabel txtIzena = new JLabel("Erabiltzailearen izena");
 		JLabel txtPasahitza = new JLabel("Erabiltzailearen pasahitza");
@@ -77,6 +78,7 @@ public class signUp extends erronka1.signIn {
 				frame.getContentPane().add(signInPane);
 			    signInPane.setVisible(true);
 			    signUpPane.setVisible(false);
+			    frame.setTitle("Sahioa sartu");
 			}
 		});
 		hasiSahioa.setBorder(null);
@@ -89,8 +91,11 @@ public class signUp extends erronka1.signIn {
 		
 		registratu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String contrasena = new String(pasahitza.getPassword());
-				String contrasenaKonfirmatu = new String(pasahitzaKonfirmatu.getPassword());
+				char[] contrasenaChars = pasahitza.getPassword();
+				char[] contrasenaKonfirmatuChars = pasahitzaKonfirmatu.getPassword();
+				
+				String contrasena = new String(contrasenaChars);
+				String contrasenaKonfirmatu = new String(contrasenaKonfirmatuChars);
 
 				if (contrasena.equals(contrasenaKonfirmatu) && !contrasena.isEmpty() && !contrasenaKonfirmatu.isEmpty() && !erabiltzailea.getText().equals("")) {
 				    user = erabiltzailea.getText();
@@ -99,6 +104,7 @@ public class signUp extends erronka1.signIn {
 				    frame.getContentPane().add(signInPane);
 				    signInPane.setVisible(true);
 				    signUpPane.setVisible(false);
+				    frame.setTitle("Sahioa sartu");
 				    
 				} else if(!contrasena.equals(contrasenaKonfirmatu)){
 					lblZerbaitTzartoAtera.setText("Pasahitzak desberdinak dira.");
@@ -108,7 +114,6 @@ public class signUp extends erronka1.signIn {
 				}
 			}
 		});
-		
 		
 		//default
 		signInPane.setVisible(false);

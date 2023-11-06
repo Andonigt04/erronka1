@@ -1,15 +1,15 @@
 package erronka1;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-public class main implements erronka1.menuBar{
+public class main implements  erronka1.menuBar, erronka1.jokalariakInter, erronka1.etxeaInter, erronka1.jardunaldiakInter{
 
-	private JFrame main;
+	public JFrame main;
 
 	/**
 	 * Launch the application.
@@ -43,52 +43,55 @@ public class main implements erronka1.menuBar{
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		main.getContentPane().setLayout(null);
 		
-		menuBar.setBounds(160, 11, 602, 30);
+		main.getContentPane().add(etxeaPane, BorderLayout.CENTER);
 		
-		etxea.addActionListener(new ActionListener() {
+		etxeaRel();
+		
+		etxeaMenu.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent actionEvent) {
-	            jokalariakPane.setVisible(false);
-	            jardunaldiakPane.setVisible(false);
+	        	main.setTitle("Hockey Federazioa - Etxea");
+	        	etxeaRel();
+	        	main.getContentPane().removeAll();
+	        	main.getContentPane().add(etxeaPane, BorderLayout.CENTER);
 	        }
 	    });
 		
-		jokalariak.addActionListener(new ActionListener() {
+		jokalariakMenu.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent actionEvent) {
-	        	
-	        	jokalariakPane.setVisible(true);
-	            jardunaldiakPane.setVisible(false);
+	        	main.setTitle("Hockey Federazioa - Jokalariak");
+	        	jokalariakRel();
+	        	main.getContentPane().removeAll();
+	        	main.getContentPane().add(jokalariakPane, BorderLayout.CENTER);
 	        }
 	    });
 		
-		sailkapenak.addActionListener(new ActionListener() {
+		sailkapenakMenu.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent actionEvent) {
-	        	jokalariakPane.setVisible(false);
-	            jardunaldiakPane.setVisible(false);
+	        	main.setTitle("Hockey Federazioa - Sailkapena");
+	        	main.getContentPane().removeAll();
+	        	main.getContentPane().add(etxeaPane, BorderLayout.CENTER);
 	        }
 	    });
 		
-		jardunaldiak.addActionListener(new ActionListener() {
+		jardunaldiakMenu.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent actionEvent) {
-	            jokalariakPane.setVisible(false);
-	            jardunaldiakPane.setVisible(true);
+	        	main.setTitle("Hockey Federazioa - Jardunaldiak");
+	        	jardunaldiakRel();
+	        	main.getContentPane().removeAll();
+	        	main.getContentPane().add(jardunaldiakPane, BorderLayout.CENTER);
 	        }
 	    });
 		
-		main.getContentPane().add(jokalariakPane);
-		jokalariakPane.setVisible(true);
-		//main.getContentPane().add(etxeaPane);
-		
-		jokalariakPane.setVisible(true);
-		
-		jokalariakPane.add(menuBar);
-		jardunaldiakPane.add(menuBar);
+		//panel bakoitzean menua gehitu
 		etxeaPane.add(menuBar);
 		
-		menuBar.add(etxea);
-		menuBar.add(jokalariak);
-		menuBar.add(sailkapenak);
-		menuBar.add(jardunaldiak);
+		//menuari posizioa ipini
+		menuBar.setBounds(300, 20, 300, 20);
 		
+		menuBar.add(etxeaMenu);
+		menuBar.add(jokalariakMenu);
+		menuBar.add(sailkapenakMenu);
+		menuBar.add(jardunaldiakMenu);
 		
 	}
 }
